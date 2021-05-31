@@ -1,9 +1,5 @@
-#This Code will only work in ancient compiler like Turbo C
-
-
-
-
-
+/* This code will run only in turbo c */
+/* Author -> Satyam Singh */
 #include<stdio.h>
 #include<string.h>
 #include<process.h>
