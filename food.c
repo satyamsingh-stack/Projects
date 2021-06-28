@@ -1,3 +1,5 @@
+/* This code will run only in turbo c */
+/* Author -> Satyam Singh */
 #include<stdio.h>
 #include<string.h>
 #include<process.h>
