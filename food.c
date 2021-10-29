@@ -26,7 +26,7 @@ FILE *fp;
 void line(){
 	int n;
 	for(n=1;n<=80;n++){
-		textcolor(LIGHTRED);
+		textcolor(LIGHTRED);  	/*This Function will Simply Create Line */
 		cprintf("_");
 	}
 	printf("\n");
@@ -35,7 +35,7 @@ void whitebox(int size){
 	int i;
 	textbackground(WHITE);
 	for(i=1;i<=size;i++){
-		cprintf(" ");
+		cprintf(" ");		/*This Function will make a white rectangular Box*/
 	}
 	textbackground(BLACK);
 }
@@ -43,11 +43,11 @@ void yellowbox(int size){
 	int i;
 	textbackground(YELLOW);
 	for(i=1;i<=size;i++){
-		cprintf(" ");
+		cprintf(" ");		/*This Function will make a yellow rectangular Box*/
 	}
 	textbackground(BLACK);
 }
-void drawbox(int sr, int sc, int r, int c){
+void drawbox(int sr, int sc, int r, int c){			/*This Function will make a rectangular Box, Here sr= starting row, sc= starting column, r=row, c= Column*/
 	int i,j;
 	gotoxy(sc,sr);
 	textcolor(LIGHTBLUE);
@@ -68,7 +68,8 @@ void drawbox(int sr, int sc, int r, int c){
 	   cprintf("%c",205);
 	cprintf("%c",188);
 }
-void add_food_iteam(){
+/*This Function is used to add food item in the menu, using Linkedlist insertion at end*/
+void add_food_iteam(){               
 	struct food *new_food=(struct food*)malloc(sizeof(struct food));
 	system("cls");
 	drawbox(7,17,8,50);
