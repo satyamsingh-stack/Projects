@@ -676,4 +676,4 @@ int main(){
 	page1();
 	screen1();
 	return 0;
-}
+}  
