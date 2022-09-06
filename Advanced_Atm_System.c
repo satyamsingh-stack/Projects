@@ -1,7 +1,7 @@
 /* This code will run only in turbo c */
 /* Author -> Satyam Singh */
-#include<process.h>
-#include<string.h>
+#include<process.h>   					//Used to access exit and system("cls") functions
+#include<string.h>					//Used to access inbuilt functions of Strings
 #include<stdio.h>
 #include<conio.h>
 #include<time.h>
