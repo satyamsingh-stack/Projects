@@ -1,36 +1,43 @@
 /* This code will run only in turbo c */
 /* Author -> Satyam Singh */
 #include<stdio.h>
-#include<string.h>
-#include<process.h>
-#include<malloc.h>
+#include<string.h>					//Used to access inbuilt functions of string 
+#include<process.h>				 	//Used to access inbuilt function like exit, system("pause")
+#include<malloc.h>					//Used to allocate memory dynammicaly 
 #include<conio.h>
-void screen1();
+void screen1();		//Prototype of screen1 function
+
 struct food{
-	char iteam1[21],rate1[4];
-	int sno1;
+	char iteam1[21],rate1[4];	//Represent the group to related variables into one place(food). This structure is generally used to store the food iteams.
+	int sno1;			// iteam1 ,rate1, sno1 etc. are the member of the structure.
 	struct food *next1;
 };
+
 struct food * head1,*tail1;
+
 struct drink{
-	char iteam2[21],rate2[4];
-	int sno2;
+	char iteam2[21],rate2[4];	//Represent the group to related variables into one place(drink). This structure is generally used to store the drink iteams.
+	int sno2;			//iteam2 ,rate2, sno2 etc. are the member of the structure.
 	struct drink *next2;
 };
 struct drink* head2,*tail2;
+
 struct customer{
-	char name[21],address[51],mobile[11];
+	char name[21],address[51],mobile[11];  //This is used to Store the record of customer
 };
+
 struct customer c;
-FILE *fp;
+FILE *fp;		//Global variable used to declare the File
+
 void line(){
 	int n;
 	for(n=1;n<=80;n++){
 		textcolor(LIGHTRED);  	/*This Function will Simply Create Line */
-		cprintf("_");
+		cprintf("_");		//cprintf is used for color printing
 	}
 	printf("\n");
 }
+
 void whitebox(int size){
 	int i;
 	textbackground(WHITE);
@@ -39,6 +46,7 @@ void whitebox(int size){
 	}
 	textbackground(BLACK);
 }
+
 void yellowbox(int size){
 	int i;
 	textbackground(YELLOW);
@@ -47,11 +55,12 @@ void yellowbox(int size){
 	}
 	textbackground(BLACK);
 }
-void drawbox(int sr, int sc, int r, int c){			/*This Function will make a rectangular Box, Here sr= starting row, sc= starting column, r=row, c= Column*/
+
+void drawbox(int sr, int sc, int r, int c){		/*This Function will make a rectangular Box, Here sr= starting row, sc= starting column, r=row, c= Column*/			
 	int i,j;
 	gotoxy(sc,sr);
 	textcolor(LIGHTBLUE);
-	cprintf("%c",201);
+	cprintf("%c",201);			
 	for(i=1;i<=c;i++)
 	   cprintf("%c",205);
 	cprintf("%c",187);
@@ -68,16 +77,17 @@ void drawbox(int sr, int sc, int r, int c){			/*This Function will make a rectan
 	   cprintf("%c",205);
 	cprintf("%c",188);
 }
-/*This Function is used to add food item in the menu, using Linkedlist insertion at end*/
-void add_food_iteam(){               
+
+
+void add_food_iteam(){      	//This Function is used to add food item in the menu, using Linkedlist insertion at end.        
 	struct food *new_food=(struct food*)malloc(sizeof(struct food));
 	system("cls");
-	drawbox(7,17,8,50);
+	drawbox(7,17,8,50);			
 	textcolor(YELLOW+BLINK);
 	gotoxy(27,6);
 	cprintf(">> Add Food Iteams in the MENU <<");
 	printf("\n\n");
-	gotoxy(20,9);
+	gotoxy(20,9);				//gotoxy function is used to set the pointer to the specific x and y cordinates.
 	textcolor(CYAN);
 	cprintf("Enter Iteam Id : "); gotoxy(37,9); yellowbox(5); gotoxy(37,9);	scanf("%d",&new_food->sno1);
 	gotoxy(20,11);
@@ -88,7 +98,7 @@ void add_food_iteam(){
 	printf("\n");
 	new_food->next1=NULL;
 	if(head1==NULL){
-		head1=tail1=new_food;
+		head1=tail1=new_food;				//algo to add food iteams at the end of the linkedlist
 	}
 	else{
 		tail1->next1=new_food;
@@ -100,7 +110,8 @@ void add_food_iteam(){
 	gotoxy(1,23);
 	system("pause");
 }
-void add_drink_iteam(){
+
+void add_drink_iteam(){				//This Function is used to add drink item in the menu, using Linkedlist insertion at end.
 	struct drink *new_drink=(struct drink*)malloc(sizeof(struct drink));
 	system("cls");
 	drawbox(7,17,8,50);
@@ -118,11 +129,11 @@ void add_drink_iteam(){
 	cprintf("Enter Rate : "); gotoxy(32,13); whitebox(5); gotoxy(32,13);	fflush(stdin);	gets(new_drink->rate2);
 	new_drink->next2=NULL;
 	if(head2==NULL){
-		head2=tail2=new_drink;
+		head2=tail2=new_drink;   //fflush(stdin) is used for buffer
 	}
 	else{
 		tail2->next2=new_drink;
-		tail2=new_drink;
+		tail2=new_drink;				//algo to add drink iteams at the end of the linkedlist
 	}
 	gotoxy(30,15);
 	textcolor(GREEN+BLINK);
@@ -130,7 +141,8 @@ void add_drink_iteam(){
 	gotoxy(1,23);
 	system("pause");
 }
-void show_food_iteam(){
+
+void show_food_iteam(){			//This function will simply display all the available food iteams.
 	struct food* ptr;
 	system("cls");
 	gotoxy(25,1);
@@ -152,7 +164,8 @@ void show_food_iteam(){
 	gotoxy(1,23);
 	system("pause");
 }
-void show_drink_iteam(){
+
+void show_drink_iteam(){			//This function will simply display all the available food iteams.
 	struct drink* ptr;
 	system("cls");
 	gotoxy(25,1);
@@ -174,9 +187,10 @@ void show_drink_iteam(){
 	gotoxy(1,23);
 	system("pause");
 }
+
 void create_id(){
 	system("cls");
-	system("cls");
+	system("cls");			//Here we are creating Id. Means add the data into the file for the future reference.
 	drawbox(7,14,10,58);
 	textcolor(YELLOW+BLINK);
 	gotoxy(30,6);
@@ -201,7 +215,7 @@ void create_id(){
 	gotoxy(34,14);
 	fflush(stdin);
 	gets(c.address);
-	fseek(fp,0,SEEK_END);
+	fseek(fp,0,SEEK_END);	//fseek() is used to move file pointer associated with a given file to a specific position
 	fwrite(&c,sizeof(c),1,fp);
 	textcolor(GREEN+BLINK);
 	gotoxy(31,16);
@@ -209,7 +223,8 @@ void create_id(){
 	gotoxy(1,23);
 	system("pause");
 }
-void show_customer(){
+
+void show_customer(){		//This function will simply display the record of customers.
 	system("cls");
 	textcolor(MAGENTA+BLINK);
 	gotoxy(25,1);
@@ -229,7 +244,8 @@ void show_customer(){
 	gotoxy(1,23);
 	system("pause");
 }
-void admin(){
+
+void admin(){			//Admin pannel. Only Admins have the access of this function.
 	int l1,l2,id,pass;
 	system("cls");
 	gotoxy(30,7);
@@ -248,7 +264,7 @@ void admin(){
 	whitebox(10);
 	gotoxy(44,12);
 	scanf("%d",&pass);
-	if(id==318 && pass==2210){
+	if(id==318 && pass==2210){			//Admin userid==318 and Admin Password==2210
 		int choice;
 		fp=fopen("food.dat","rb+");
 		if(fp==NULL) fp=fopen("food.dat","wb+");
@@ -298,12 +314,12 @@ void admin(){
 			gotoxy(25,15);
 			cprintf("Enter Your Choice : ");
 			gotoxy(44,15); whitebox(2); gotoxy(44,15); scanf("%d",&choice);
-			switch(choice){
-				case 1: add_food_iteam(); break;
-				case 2: add_drink_iteam(); break;
-				case 3: show_food_iteam(); break;
-				case 4: show_drink_iteam(); break;
-				case 5: show_customer();break;
+			switch(choice){		//menu
+				case 1: add_food_iteam(); break;		//Add food
+				case 2: add_drink_iteam(); break;		//Add Drink
+				case 3: show_food_iteam(); break;		//Display Food 
+				case 4: show_drink_iteam(); break;		//Display Drink
+				case 5: show_customer();break;			//Display Customer
 				case 6: fclose(fp);screen1();
 				default:{
 						gotoxy(30,17);
@@ -323,6 +339,7 @@ void admin(){
 	gotoxy(1,23);
 	system("pause");
 }
+
 void tree(){
 	textcolor(RED);
 	cprintf("     *      ");
@@ -330,7 +347,7 @@ void tree(){
 	textcolor(GREEN);
 	cprintf("     **     ");
 	printf("\n");
-	cprintf("    ****    ");
+	cprintf("    ****    ");			//This function will simply create the tree like diagram
 	printf("\n");
 	cprintf("   ******   ");
 	textcolor(YELLOW);
@@ -363,6 +380,7 @@ void tree(){
 	printf("\n");
 	cprintf("    ****    ");
 }
+
 void page1(){
 	system("cls");
 	gotoxy(1,15);
@@ -370,8 +388,8 @@ void page1(){
 	drawbox(10,16,9,53);
 	gotoxy(27,12);
 	textcolor(MAGENTA);
-	cprintf("Current Date is : %s",__DATE__);
-	gotoxy(27,13);
+	cprintf("Current Date is : %s",__DATE__);		//It will display the Current Date
+	gotoxy(27,13);						//It will dsplay the Current Time
 	cprintf("Current Time is : %s",__TIME__);
 	gotoxy(27,14);
 	textcolor(RED);
@@ -416,7 +434,8 @@ void page1(){
 	gotoxy(23,24);
 	system("pause");
 }
-void loading(){
+
+void loading(){			//Loading like animation function
 	int r;
 	drawbox(7,23,7,35);
 	gotoxy(35,6);
@@ -448,7 +467,8 @@ void loading(){
 	gotoxy(1,23);
 	system("pause");
 }
-void UPI(){
+
+void UPI(){			//Payment function
 	char pin[6],ch;
 	int i=0;
 	drawbox(7,20,7,40);
@@ -468,7 +488,8 @@ void UPI(){
 	system("cls");
 	loading();
 }
-void order_food(){
+
+void order_food(){			// This function is used to order the food iteam
 	int sno;
 	struct food* temp;
 	system("cls");
@@ -488,7 +509,7 @@ void order_food(){
 		gotoxy(22,10);
 		cprintf("You Order Details is %s in Rs %s",temp->iteam1,temp->rate1);
 		printf("\n");
-		UPI();
+		UPI();	//This is a payment simulation function
 	}
 	else{
 		gotoxy(30,12);
@@ -498,7 +519,8 @@ void order_food(){
 		system("pause");
 	}
 }
-void order_drink(){
+
+void order_drink(){		// This function is used to order the drinks iteam
 	int sno;
 	struct drink* temp;
 	system("cls");
@@ -518,7 +540,7 @@ void order_drink(){
 		gotoxy(25,10);
 		cprintf("You Order Details is %s in Rs %s",temp->iteam2,temp->rate2);
 		printf("\n");
-		UPI();
+		UPI();	//This is a payment simulation function
 	}
 	else{
 		gotoxy(30,12);
@@ -528,13 +550,14 @@ void order_drink(){
 		system("pause");
 	}
 }
-void login(){
+
+void login(){			
 	char name1[51],mobile1[11];
 	int l1,l2;
 	system("cls");
 	gotoxy(28,6);
 	textcolor(MAGENTA+BLINK);
-	cprintf(">> Now, Login with your Id <<");
+	cprintf(">> Now, Login with your Id <<");			//Creating the login page
 	drawbox(8,17,7,50);
 	gotoxy(28,10);
 	textcolor(GREEN);
@@ -550,9 +573,9 @@ void login(){
 	gotoxy(50,12);
 	gets(mobile1);
 	rewind(fp);
-	while(fread(&c,sizeof(c),1,fp)){
-		l1=strcmp(name1,c.name);
-		l2=strcmp(mobile1,c.mobile);
+	while(fread(&c,sizeof(c),1,fp)){	//Open the file for reading purpose
+		l1=strcmp(name1,c.name);		//Compare the string name1 and c.name
+		l2=strcmp(mobile1,c.mobile);		//Compare the string mobile, c.mobile
 		if(l1==0 && l2==0){
 			int choice;
 			for(;;){
@@ -599,7 +622,7 @@ void login(){
 					switch(choice){
 						case 1: show_food_iteam(); break;
 						case 2: show_drink_iteam(); break;
-						case 3: order_food();	break;
+						case 3: order_food();	break;			//Creating the Food menu
 						case 4:	order_drink();	break;
 						case 5: fclose(fp);screen1();
 						default:
@@ -620,11 +643,12 @@ void login(){
 	printf("\n\n\n\n\n");
 	system("pause");
 }
+
 void screen1(){
 	int choice;
 	system("cls");
-	for(;;){
-		fp=fopen("food.dat","rb+");
+	for(;;){		//Infinite loop
+		fp=fopen("food.dat","rb+");  // Open the food.dat in binary file for both reading and writing.
 		if(fp==NULL) fp=fopen("food.dat","wb+");
 		system("cls");
 		drawbox(7,23,7,35);
@@ -665,13 +689,14 @@ void screen1(){
 		switch(choice){
 			case 1: create_id();	break;
 			case 2: login();	break;
-			case 3: admin();	break;
+			case 3: admin();	break;				//Creating Main Menu
 			case 4: fclose(fp);	exit(0);
 			default :
 				printf("Invalid Choice...");
 		}
 	}
 }
+
 int main(){
 	page1();
 	screen1();
