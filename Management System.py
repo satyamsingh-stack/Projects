@@ -333,7 +333,7 @@ def system():
         # defining cancel button
         def cancel():
             feed.destroy()
-
+##We are using the inbuilt database present in Pycharm IDE i.e SQLite and created the database “restaurant.db”. Connection with the database is done with the connect() function
         # label#
         lb1 = Label(feed, font=("Calisto MT", 15, "bold"), text="Thanks for Visiting!", fg="black").pack(side=TOP)
         lbl2 = Label(feed, font=("calisto MT", 15), text="We're glad you chose us ! Please tell us how it was!",
